@@ -1,0 +1,443 @@
+<title>Podium OS — Business Plan for US Biathlon</title>
+<style>
+  :root {
+    --paper: #eef1ee;
+    --paper-raised: #f8faf7;
+    --ink: #1c2b33;
+    --ink-soft: #324048;
+    --muted: #51636b;
+    --border: #d4dbd3;
+    --border-strong: #b7c0b5;
+    --accent: #a73b2f;
+    --accent-soft: #f3e3df;
+    --ngb: #1a6fa8;
+    --ngb-soft: #e1edf4;
+    --gr: #2f8f52;
+    --gr-soft: #e3f0e6;
+    --band-ink: #eef1ee;
+    --band-bg: #1c2b33;
+    --font-display: "Roboto Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+    --font-body: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --font-mono: "SF Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141b1f;
+      --paper-raised: #1b2328;
+      --ink: #e7ebe9;
+      --ink-soft: #c7d0cc;
+      --muted: #8fa09c;
+      --border: #2a3338;
+      --border-strong: #3a4449;
+      --accent: #d8705f;
+      --accent-soft: #3a2420;
+      --ngb: #4a9bcb;
+      --ngb-soft: #1d3a46;
+      --gr: #38a05e;
+      --gr-soft: #1c3528;
+      --band-ink: #141b1f;
+      --band-bg: #e7ebe9;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #141b1f;
+    --paper-raised: #1b2328;
+    --ink: #e7ebe9;
+    --ink-soft: #c7d0cc;
+    --muted: #8fa09c;
+    --border: #2a3338;
+    --border-strong: #3a4449;
+    --accent: #d8705f;
+    --accent-soft: #3a2420;
+    --ngb: #4a9bcb;
+    --ngb-soft: #1d3a46;
+    --gr: #38a05e;
+    --gr-soft: #1c3528;
+    --band-ink: #141b1f;
+    --band-bg: #e7ebe9;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--ngb); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--ngb); outline-offset: 2px; }
+
+  .sheet { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ---- masthead ---- */
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 0 24px;
+    border-bottom: 3px solid var(--ink);
+    margin-bottom: 36px;
+  }
+  .masthead-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1.title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(34px, 7vw, 52px);
+    line-height: 1.02;
+    margin: 4px 0 2px;
+    text-wrap: balance;
+  }
+  .subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 19px;
+    max-width: 30ch;
+  }
+
+  /* ---- type rhythm ---- */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--border-strong); }
+  section { margin: 44px 0; }
+  h2 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.01em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 14px; max-width: 64ch; }
+  .lede { font-size: 19px; color: var(--ink-soft); }
+  strong { color: var(--ink); }
+  ul.plain { list-style: none; margin: 0; padding: 0; }
+  ul.plain li { margin: 0 0 10px; padding-left: 20px; position: relative; max-width: 64ch; }
+  ul.plain li::before {
+    content: "—";
+    position: absolute; left: 0; color: var(--accent);
+  }
+
+  /* ---- pull quote stat ---- */
+  .pullstat {
+    border-top: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-strong);
+    padding: 22px 0;
+    margin: 30px 0 38px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  .pullstat .num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 54px;
+    color: var(--accent);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .pullstat .cap { color: var(--muted); font-size: 14px; max-width: 42ch; }
+
+  /* ---- module grid ---- */
+  .modules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+  }
+  @media (max-width: 560px) { .modules { grid-template-columns: 1fr; } }
+  .module {
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 14px 16px;
+  }
+  .module .n {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .module h3 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    margin: 4px 0 6px;
+  }
+  .module p { font-size: 14.5px; margin: 0; color: var(--ink-soft); }
+
+  /* ---- tables ---- */
+  .tablewrap { overflow-x: auto; margin: 10px 0 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 2px solid var(--border-strong);
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+  tr.total td { font-weight: 700; border-top: 2px solid var(--border-strong); color: var(--ink); }
+  .foot-note { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  /* ---- competitor rows ---- */
+  .complist { display: flex; flex-direction: column; gap: 0; margin-top: 12px; }
+  .comprow {
+    display: grid; grid-template-columns: 1fr 2.2fr;
+    gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .comprow .who { font-family: var(--font-display); text-transform: uppercase; font-size: 14.5px; letter-spacing: 0.02em; }
+  .comprow .what { font-size: 14.5px; color: var(--ink-soft); }
+  .comprow.gap-row { background: var(--accent-soft); border: 1px dashed var(--accent); border-radius: 3px; padding: 14px 16px; margin-top: 4px; }
+  .comprow.gap-row .who { color: var(--accent); }
+
+  /* ---- stat tiles ---- */
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 18px 0 4px; }
+  @media (max-width: 560px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+  .tile { background: var(--paper-raised); padding: 14px 14px 12px; }
+  .tile .v {
+    font-family: var(--font-mono); font-weight: 700; font-size: 22px;
+    color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+  .tile .k { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+  /* ---- chart ---- */
+  .chartcard { background: var(--paper-raised); border: 1px solid var(--border); border-radius: 3px; padding: 18px 18px 6px; margin: 16px 0; }
+  .chart-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 4px; }
+  .chart-head h3 { font-family: var(--font-display); text-transform: uppercase; font-size: 14px; letter-spacing: 0.03em; margin: 0; }
+  .legend { display: flex; gap: 16px; font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .chart-svg-wrap { overflow-x: auto; }
+  .chart-caveat { font-size: 12.5px; color: var(--muted); font-style: italic; margin: 10px 0 2px; max-width: 64ch; }
+
+  /* ---- closing band ---- */
+  .band {
+    background: var(--band-bg);
+    color: var(--band-ink);
+    margin: 56px -24px -24px;
+    padding: 40px 24px 48px;
+  }
+  .band-inner { max-width: 712px; margin: 0 auto; }
+  .band .eyebrow { color: var(--accent); }
+  .band .eyebrow::after { background: color-mix(in srgb, var(--band-ink) 30%, transparent); }
+  .band h2 { color: var(--band-ink); }
+  .band p { color: color-mix(in srgb, var(--band-ink) 85%, transparent); max-width: 60ch; }
+  .band ol { margin: 14px 0 0; padding: 0; counter-reset: ask; list-style: none; max-width: 64ch; }
+  .band ol li {
+    counter-increment: ask;
+    display: grid; grid-template-columns: 28px 1fr; gap: 10px;
+    padding: 10px 0; border-top: 1px solid color-mix(in srgb, var(--band-ink) 20%, transparent);
+    font-size: 15px;
+  }
+  .band ol li::before {
+    content: counter(ask);
+    font-family: var(--font-mono); color: var(--accent); font-weight: 700;
+  }
+
+  .sources {
+    margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border);
+    font-size: 11.5px; color: var(--muted); line-height: 1.7;
+  }
+  .sources a { color: var(--muted); }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="masthead-row">
+      <span>Confidential draft — for discussion</span>
+      <span>28 Oct 2026</span>
+    </div>
+    <h1 class="title">Podium OS</h1>
+    <p class="subtitle">An operating system for the back office of Olympic sport — prepared as a working concept for Jack Gierhart, CEO, US Biathlon.</p>
+  </header>
+
+  <p class="lede">US Biathlon runs on roughly $3.7M a year and about a dozen staff who do the work of an HR department, a compliance office, a development shop, and a sponsorship agency — one person at a time, mostly in spreadsheets. That pattern repeats across almost every National Governing Body that isn't Swimming, Hockey, or Track &amp; Field, and again, smaller, across the clubs and associations beneath them.</p>
+
+  <div class="pullstat">
+    <div class="num">50</div>
+    <div class="cap">U.S. National Governing Bodies recognized by the USOPC — the large majority run budgets and staffing in US Biathlon's range, each independently reinventing the same board decks, sponsor reports, and compliance trackers.</div>
+  </div>
+
+  <section>
+    <div class="eyebrow">01 · The opportunity</div>
+    <p>Compliance tracking, membership admin, donor and sponsor relationship management, sponsor ROI reporting, and board/USOPC reporting have no dedicated systems at most NGBs and no budget to build any. Large language models make the judgment-heavy parts of this work — drafting a sponsor report, matching a grant to eligibility, flagging who's about to lapse on SafeSport — newly automatable by a small vertical SaaS team, which wasn't true five years ago. The incumbent tools in this space were built registration-first, pre-AI, and haven't caught up.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">02 · What it does</div>
+    <p>One platform, modular enough that a small NGB can adopt it one piece at a time — starting with the piece that hurts most.</p>
+    <div class="modules">
+      <div class="module"><span class="n">01</span><h3>Compliance hub</h3><p>SafeSport training &amp; background-check status per person, expiring-document alerts, audit-ready reports for the USOPC.</p></div>
+      <div class="module"><span class="n">02</span><h3>Membership &amp; athletes</h3><p>Registration, eligibility, licensing, results and ranking integration.</p></div>
+      <div class="module"><span class="n">03</span><h3>Development CRM</h3><p>Donor pipeline, major-gift tracking, AI grant-matching, campaign management.</p></div>
+      <div class="module"><span class="n">04</span><h3>Sponsorship</h3><p>Sponsor CRM, deliverable tracking, AI-drafted impact/ROI reports, renewal pipeline.</p></div>
+      <div class="module"><span class="n">05</span><h3>Board &amp; funder reporting</h3><p>AI assembles every module into board decks, USOPC filings, and grant reports — review-and-send, not build-from-scratch.</p></div>
+      <div class="module"><span class="n">06</span><h3>People ops</h3><p>Onboarding, volunteer &amp; stipend tracking; integrates Gusto/Rippling rather than rebuilding payroll.</p></div>
+    </div>
+    <p class="foot-note">Deliberately not built: a payroll engine, a background-check vendor, a SafeSport LMS. Those are regulated and already mandated — Podium OS orchestrates on top of them, which also lowers the switching barrier to adopt.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">03 · Market sizing</div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Layer</th><th>Size</th><th>Basis</th></tr></thead>
+        <tbody>
+          <tr><td><strong>TAM</strong></td><td>$2.6–3.0B → $4.3–4.6B by 2030</td><td>Global association-management software market, growing ~11–14% CAGR; nonprofit CRM adds $3–9B depending on scope definition</td></tr>
+          <tr><td><strong>SAM</strong></td><td>Low tens of thousands of orgs</td><td>50 U.S. NGBs + state/regional affiliates + grassroots clubs beneath them (hockey, swimming, wrestling alone ≈ 10,800 clubs)</td></tr>
+          <tr><td><strong>SOM</strong> (3–5 yr)</td><td>~150–250 accounts</td><td>The ~35–40 NGBs sized like US Biathlon, plus large regional affiliates, ahead of a volume move into grassroots clubs</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot-note">Nonprofits broadly report spending 20–40% of administrative time on grant writing, reporting, and compliance — the exact wedge this product targets.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">04 · Why now, why not already solved</div>
+    <div class="complist">
+      <div class="comprow"><div class="who">SportsEngine / Stack Sports</div><div class="what">Embedded in several large NGBs for registration, eligibility, and background screening ($14–150/check). Strong on registration; no fundraising, sponsor reporting, or HR. Some NGBs have migrated away over cost and service issues.</div></div>
+      <div class="comprow"><div class="who">General AMS</div><div class="what">ClubExpress, Wild Apricot, GrowthZone — not sport-specific, no SafeSport compliance model, no sponsor or board-reporting workflow.</div></div>
+      <div class="comprow"><div class="who">Nonprofit CRM / grants</div><div class="what">Blackbaud, Bonterra ($1,500–8,500/yr for sub-$500K nonprofits), Submittable (~$399/mo+) — solve money-in only; nothing on compliance, membership, or sport-specific reporting.</div></div>
+      <div class="comprow gap-row"><div class="who">The gap</div><div class="what">Nobody combines SafeSport-grade compliance, membership, fundraising/sponsor CRM, AI-generated board reporting, and lightweight HR in one NGB-shaped product.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">05 · Financial model</div>
+    <p>Two tiers: an <strong>NGB tier</strong> (full module set, high-touch sales, ~$1,500–5,000/mo) and a <strong>grassroots tier</strong> (self-serve, lighter feature set, ~$100–500/mo) that opens in Year 2 once the NGB product and sales motion are proven.</p>
+
+    <div class="chartcard">
+      <div class="chart-head">
+        <h3>ARR exit run-rate by year ($K)</h3>
+        <div class="legend">
+          <span><i class="swatch" style="background:var(--ngb)"></i>NGB tier · 50 orgs</span>
+          <span><i class="swatch" style="background:var(--gr)"></i>Grassroots tier · 10,000+ orgs</span>
+        </div>
+      </div>
+      <div class="chart-svg-wrap">
+        <svg viewBox="0 0 640 345" width="100%" style="min-width:520px" role="img" aria-label="Stacked bar chart of ARR exit run-rate across three years, rising from $150K in Year 1 to $660K in Year 2 to $1.9M in Year 3, split between NGB tier and grassroots tier revenue">
+          <!-- gridlines -->
+          <g font-family="SF Mono, Menlo, Consolas, monospace" font-size="10.5">
+            <line x1="70" y1="300" x2="620" y2="300" stroke="var(--border-strong)" stroke-width="1"></line>
+            <line x1="70" y1="232.5" x2="620" y2="232.5" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 3"></line>
+            <line x1="70" y1="165" x2="620" y2="165" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 3"></line>
+            <line x1="70" y1="97.5" x2="620" y2="97.5" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 3"></line>
+            <line x1="70" y1="30" x2="620" y2="30" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 3"></line>
+            <text x="62" y="303" text-anchor="end" fill="var(--muted)">0</text>
+            <text x="62" y="235.5" text-anchor="end" fill="var(--muted)">500</text>
+            <text x="62" y="168" text-anchor="end" fill="var(--muted)">1,000</text>
+            <text x="62" y="100.5" text-anchor="end" fill="var(--muted)">1,500</text>
+            <text x="62" y="33" text-anchor="end" fill="var(--muted)">2,000</text>
+          </g>
+
+          <!-- Year 1: NGB only, rounded top -->
+          <path d="M120,300 L120,283.75 Q120,279.75 124,279.75 L216,279.75 Q220,279.75 220,283.75 L220,300 Z" fill="var(--ngb)"></path>
+          <text x="170" y="270" text-anchor="middle" font-family="SF Mono, Menlo, Consolas, monospace" font-weight="700" font-size="13" fill="var(--ink)">$150K</text>
+          <text x="170" y="320" text-anchor="middle" font-family="Roboto Condensed, Arial Narrow, sans-serif" font-size="12" letter-spacing="0.06em" fill="var(--muted)">YEAR 1</text>
+
+          <!-- Year 2: NGB + Grassroots -->
+          <rect x="295" y="227.1" width="100" height="72.9" fill="var(--ngb)"></rect>
+          <path d="M295,225.1 L295,214.9 Q295,210.9 299,210.9 L391,210.9 Q395,210.9 395,214.9 L395,225.1 Z" fill="var(--gr)"></path>
+          <rect x="295" y="225.1" width="100" height="2" fill="var(--paper-raised)"></rect>
+          <text x="345" y="268" text-anchor="middle" font-family="SF Mono, Menlo, Consolas, monospace" font-weight="700" font-size="13" fill="var(--paper-raised)">$540K</text>
+          <text x="345" y="200" text-anchor="middle" font-family="SF Mono, Menlo, Consolas, monospace" font-weight="700" font-size="13" fill="var(--ink)">$660K</text>
+          <text x="345" y="320" text-anchor="middle" font-family="Roboto Condensed, Arial Narrow, sans-serif" font-size="12" letter-spacing="0.06em" fill="var(--muted)">YEAR 2</text>
+
+          <!-- Year 3: NGB + Grassroots -->
+          <rect x="470" y="144.075" width="100" height="155.925" fill="var(--ngb)"></rect>
+          <path d="M470,142.075 L470,46.825 Q470,42.825 474,42.825 L566,42.825 Q570,42.825 570,46.825 L570,142.075 Z" fill="var(--gr)"></path>
+          <rect x="470" y="142.075" width="100" height="2" fill="var(--paper-raised)"></rect>
+          <text x="520" y="225" text-anchor="middle" font-family="SF Mono, Menlo, Consolas, monospace" font-weight="700" font-size="13" fill="var(--paper-raised)">$1,155K</text>
+          <text x="520" y="95" text-anchor="middle" font-family="SF Mono, Menlo, Consolas, monospace" font-weight="700" font-size="13" fill="var(--paper-raised)">$750K</text>
+          <text x="520" y="30" text-anchor="middle" font-family="SF Mono, Menlo, Consolas, monospace" font-weight="700" font-size="14" fill="var(--ink)">$1.9M</text>
+          <text x="520" y="320" text-anchor="middle" font-family="Roboto Condensed, Arial Narrow, sans-serif" font-size="12" letter-spacing="0.06em" fill="var(--muted)">YEAR 3</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Year</th><th class="num">NGB accts</th><th class="num">Avg ACV</th><th class="num">Grassroots accts</th><th class="num">Avg ACV</th><th class="num">ARR exit</th></tr></thead>
+        <tbody>
+          <tr><td>Year 1 — pilot</td><td class="num">5</td><td class="num">$30K</td><td class="num">—</td><td class="num">—</td><td class="num">$150K</td></tr>
+          <tr><td>Year 2 — land</td><td class="num">18</td><td class="num">$30K</td><td class="num">40</td><td class="num">$3K</td><td class="num">$660K</td></tr>
+          <tr class="total"><td>Year 3 — expand</td><td class="num">35</td><td class="num">$33K</td><td class="num">250</td><td class="num">$3K</td><td class="num">$1.9M</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="v">~78%</div><div class="k">Gross margin (SaaS)</div></div>
+      <div class="tile"><div class="v">~$6.0K</div><div class="k">NGB CAC (founder-led, peer referral)</div></div>
+      <div class="tile"><div class="v">~3 mo</div><div class="k">NGB CAC payback</div></div>
+      <div class="tile"><div class="v">6% / 15%</div><div class="k">Annual churn — NGB tier / grassroots tier</div></div>
+    </div>
+    <p class="chart-caveat">These are illustrative planning assumptions for a pre-product venture, not audited projections — in particular, CAC and churn are optimistic given a currently unproven sales motion and a tight, referral-driven buyer network. Treat the model as a target to stress-test against real pilot data, not a forecast to raise against as-is.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">06 · Go-to-market</div>
+    <ul class="plain">
+      <li><strong>Beachhead:</strong> build with US Biathlon as design partner — discounted pilot for a reference case study, product feedback, and Jack Gierhart as an advisor/connector.</li>
+      <li><strong>Wedge first:</strong> ship Compliance Hub + Board/Sponsor Reporting within ~90 days — the fastest path to a provable hours-saved, dollars-raised story.</li>
+      <li><strong>Expand through the network:</strong> NGB CEOs are a tight ~50-person peer group with regular touchpoints (USOPC NGB Assembly, annual leadership conference) — CEO-to-CEO referral likely outperforms cold outbound.</li>
+      <li><strong>Move down-market:</strong> self-serve grassroots tier once the NGB motion and product are proven; later, license to international federations.</li>
+    </ul>
+  </section>
+
+  <div class="band">
+    <div class="band-inner">
+      <div class="eyebrow">Next step</div>
+      <h2>A scoped discovery engagement</h2>
+      <p>Map US Biathlon's top time sinks, confirm the highest-ROI wedge, and build a 90-day MVP — then use it as the reference to approach 5–10 peer NGB CEOs through the NGB Council network.</p>
+      <ol>
+        <li>Paid discovery sprint with Jack Gierhart and staff — identify and quantify the top 10 recurring back-office tasks.</li>
+        <li>Prioritize and build the Compliance Hub + Board/Sponsor Reporting wedge as a working pilot.</li>
+        <li>Convert the pilot into a reference case and open conversations with 5–10 peer NGBs.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sources">
+    Sources: <a href="https://990finder.trantorfintech.com/030279959/">US Biathlon Form 990 explorer</a> · <a href="https://www.usbiathlon.org/financials">US Biathlon financials</a> · <a href="https://www.congress.gov/crs-product/R47850">USOPC primer, Congress.gov CRS</a> · <a href="https://uscenterforsafesport.org/about/faqs/">US Center for SafeSport FAQs</a> · <a href="https://www.getapp.com/recreation-wellness-software/a/sportsengine/">SportsEngine pricing, GetApp</a> · <a href="https://www.mordorintelligence.com/industry-reports/association-management-software-market">Association management software market, Mordor Intelligence</a> · <a href="https://www.vantagemarketresearch.com/nonprofit-crm-software-market">Nonprofit CRM market, Vantage Market Research</a> · <a href="https://www.capterra.com/p/111128/Bonterra-Guided-Fundraising/">Bonterra pricing, Capterra</a> · <a href="https://xponent21.com/insights/ai-for-the-back-office-automating-internal-operations-at-your-nonprofit/">AI for the nonprofit back office, Xponent21</a> · <a href="https://soundofhockey.com/2026/08/10/usa-hockey-membership-report-2025-26-season/">USA Hockey membership report</a> · <a href="https://swimswam.com/usa-swimming-membership-stays-stable-in-2024-predicting-post-olympic-growth-for-2025/">USA Swimming membership, SwimSwam</a> · <a href="https://cdn2.sportngin.com/attachments/document/0018/6286/clubguide.pdf">USA Wrestling club guide</a>. All figures beyond Section 05 are illustrative planning estimates, not firm projections.
+  </div>
+
+</div>
